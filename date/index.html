@@ -42,60 +42,7 @@
               </tr>
             </thead>
             <tbody id="date-body">
-              <tr>
-                <td>28</td>
-                <td>29</td>
-                <td>30</td>
-                <td>31</td>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-              </tr>
-              <tr>
-                <td>4</td>
-                <td>5</td>
-                <td>6</td>
-                <td>7</td>
-                <td>8</td>
-                <td>9</td>
-                <td>10</td>
-              </tr>
-              <tr>
-                <td>11</td>
-                <td>12</td>
-                <td>13</td>
-                <td>14</td>
-                <td>15</td>
-                <td>16</td>
-                <td>17</td>
-              </tr>
-              <tr>
-                <td>18</td>
-                <td>19</td>
-                <td>20</td>
-                <td>21</td>
-                <td>22</td>
-                <td>23</td>
-                <td>24</td>
-              </tr>
-              <tr>
-                <td>25</td>
-                <td>26</td>
-                <td>27</td>
-                <td>28</td>
-                <td>29</td>
-                <td>30</td>
-                <td>1</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>3</td>
-                <td>4</td>
-                <td>5</td>
-                <td>6</td>
-                <td>7</td>
-                <td>8</td>
-              </tr>
+
             </tbody>
           </table>
         </div>
@@ -109,4 +56,73 @@
     </div>
   </div>
 </body>
+<script>
+  let date = getMonthFirstDay(new Date())
+  let week = new Date(date).getDay()
+  console.log(week)
+
+  let currentYear = new Date(date).getFullYear()
+  let currentMonth = new Date(date).getMonth() + 1
+  let lastMonth = currentMonth == 1 ? 12 : currentMonth - 1
+  let nextMonth = currentMonth == 12 ? 1 : currentMonth + 1
+
+  let currentMonthDays = haoManyDays(currentYear, currentMonth)
+  let lastMonthDays = haoManyDays(lastMonth == 12 ? currentYear - 1 : currentYear, lastMonth)
+  let nextMonthDays = haoManyDays(nextMonth == 1 ? currentYear + 1 : currentYear, nextMonth)
+
+  console.log('开始区间' + (lastMonthDays - week + 1) + '---' + lastMonthDays)
+  console.log('中间区间' + 1 + '---' + currentMonthDays)
+  console.log('结束区间' + 1 + '---' + (42 - currentMonthDays - week))
+  let section1 = [...new Array(lastMonthDays + 1).keys()].slice(lastMonthDays - week + 1)
+  let section2 = [...new Array(currentMonthDays + 1).keys()].slice(1)
+  let section3 = [...new Array(42 - currentMonthDays - week + 1).keys()].slice(1)
+  let allSection = [...section1, ...section2, ...section3]
+
+  console.log('section1',section1)
+  console.log('section2',section2)
+  console.log('section3',section3)
+  console.log('section3',allSection)
+  createTable(allSection)
+
+  function haoManyDays(year, month) {
+    const table = {
+      1: 31, 3: 31, 5: 31, 7: 31, 8: 31, 9: 30, 10: 31, 12: 31,
+      4: 30, 6: 30, 9: 30, 11: 30,
+      2: isLeapYear(year) ? 29 : 28
+    }
+    return table[month]
+  }
+
+  function isLeapYear(year) {
+    if ((year % 4 == 0 && !(year % 100 == 0)) || year % 400 == 0) {
+      return true
+    } else {
+      return false
+    }
+  }
+
+  function createTable(arrs) {
+    let  table = document.getElementById('date-table')
+    let  body = document.getElementById('date-body')
+    for (let i = 0; i <= 5; i++) {
+      let tr = document.createElement('tr')
+      for (let j = 0; j <= 6; j++) {
+        let td = document.createElement('td')
+        td.textContent = arrs[i*7+j]
+        tr.appendChild(td)
+      }
+      body.appendChild(tr)
+    }
+  }
+
+  function getMonthFirstDay(date){
+    let currentYear = date.getFullYear()
+    let currentMonth = date.getMonth() + 1
+    console.log(`${currentYear}-${currentMonth}-1`)
+    return new Date(`${currentYear}-${currentMonth}-1`)
+  }
+
+
+
+</script>
 </html>
