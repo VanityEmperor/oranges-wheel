@@ -1,0 +1,112 @@
+*{
+    box-sizing: border-box;
+}
+.date-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+.date-box{
+    /* width:274px; */
+}
+.input-date{
+    width: 100%;
+    height: 38px;
+    outline: 0;
+    line-height: 1.3;
+    line-height: 38px\9;
+    border-width: 1px;
+    border-style: solid;
+    background-color: #fff;
+    color: rgba(0,0,0,.85);
+    border-radius: 2px;
+    border-color: #eee;
+    box-sizing: border-box;
+    padding-left: 10px;
+}
+.date-body{
+    padding: 10px;
+    border-bottom: 1px solid #d2d2d2;
+}
+.date-body table{
+    width: 100%;
+}
+.date-body table th,td{
+    width: 36px;
+    height: 30px;
+    padding: 5px;
+    text-align: center;
+}
+.date-body table th:hover,td:hover{
+    background-color: #eee;
+    color: #333;
+}
+.date-content{
+    margin-top: 2px;
+    border: 1px solid #d2d2d2;
+}
+.date-header{
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #d2d2d2;
+}
+.double-left{
+    width: 28px;
+    height: 30px;
+    display: inline-block;
+    background-image: url('./imgs/double-left.png');
+    background-size: cover;
+    padding: 0 5px;
+}
+.single-left{
+    width: 28px;
+    height: 30px;
+    display: inline-block;
+    background-image: url('./imgs/single-left.png');
+    background-size: cover;
+    padding: 0 5px;
+}
+.double-right{
+    width: 28px;
+    height: 30px;
+    display: inline-block;
+    background-image: url('./imgs/double-right.png');
+    background-size: cover;
+    padding: 0 5px;
+}
+.single-right{
+    width: 28px;
+    height: 30px;
+    display: inline-block;
+    background-image: url('./imgs/single-right.png');
+    background-size: cover;
+    padding: 0 5px;
+}
+.date-year-month{
+    line-height: 30px;
+
+}
+.date-year-month .year{
+    padding: 0 10px;
+}
+.date-year-month .month{
+    padding: 0 10px;
+}
+
+.date-footer{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+.button-box span{
+    display: inline-block;
+    padding: 0 10px;
+    height: 26px;
+    border: 1px solid #c9c9c9;
+}
+.button-box span:nth-child(even){
+    border-left: none;
+    border-right: none;
+}
