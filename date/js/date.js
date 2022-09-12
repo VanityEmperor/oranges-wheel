@@ -40,13 +40,25 @@ function createTable(arrs,year,month,day) {
 
 
 let  body = document.getElementById('date-body')
+let lastSelectElement = null
 body.addEventListener('click',function(e){
   let element = e.target
   let ymd = element.getAttribute('data-ymd')
-  let dateInput = document.getElementById('date')
+  let dateInput = document.getElementById('input-date')
   dateInput.value = ymd
   let  curretSelectDateNode = document.getElementById('current-select-date')
   curretSelectDateNode.textContent =  ymd
+  let dateContent = document.getElementById('date-content')
+  dateContent.classList.remove('date-content-show')
+  if(lastSelectElement){
+    lastSelectElement.classList.remove('date-highlight')
+  }
+  element.classList.add('date-highlight')
+  lastSelectElement = element
 })
 
-
+let  inputDate = document.getElementById('input-date')
+inputDate.addEventListener('click',function(e){
+  let dateContent = document.getElementById('date-content')
+  dateContent.classList.add('date-content-show')
+})

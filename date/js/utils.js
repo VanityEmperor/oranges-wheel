@@ -27,9 +27,6 @@ function allDays(lastMonthDays,currentMonthDays,currentYear,currentMonth){
     let nextMonth = getNextMonth(currentMonth)
     let lastYear = lastMonth == 12 ? currentYear - 1 : currentYear
     let nextYear = nextMonth == 1 ? currentYear + 1 : currentYear
-    console.log('currentMonth',currentMonth)
-    console.log('lastMonth',lastMonth)
-    console.log('nextMonth',nextMonth)
 
     let section1 = [...new Array(lastMonthDays + 1).keys()].slice(lastMonthDays - week + 1)
     let section2 = [...new Array(currentMonthDays + 1).keys()].slice(1)
