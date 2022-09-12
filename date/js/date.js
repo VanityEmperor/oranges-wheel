@@ -4,8 +4,9 @@ let week = new Date(date).getDay()
 let currentYear = new Date(date).getFullYear()
 let currentMonth = new Date(date).getMonth() + 1
 let currentDay = new Date(new Date()).getDate()
-let lastMonth = currentMonth == 1 ? 12 : currentMonth - 1
-let nextMonth = currentMonth == 12 ? 1 : currentMonth + 1
+
+let lastMonth = getLastMonth(currentMonth)
+let nextMonth = getNextMonth(currentMonth)
 
 let currentMonthDays = haoManyDays(currentYear, currentMonth)
 let lastMonthDays = haoManyDays(lastMonth == 12 ? currentYear - 1 : currentYear, lastMonth)

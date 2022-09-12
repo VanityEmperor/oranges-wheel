@@ -30,3 +30,15 @@ function allDays(lastMonthDays,currentMonthDays,nextMonthDays){
 
     return allSection
 }
+
+function getLastMonth(currentMonth){
+  return currentMonth == 1 ? 12 : currentMonth - 1
+}
+
+function getNextMonth(currentMonth){
+  return currentMonth == 1 ? 12 : currentMonth - 1
+}
+
+function abc(){
+  
+}
