@@ -22,12 +22,28 @@ function getMonthFirstDay(date){
     return new Date(`${currentYear}-${currentMonth}-1`)
 }
 
-function allDays(lastMonthDays,currentMonthDays,nextMonthDays){
+function allDays(lastMonthDays,currentMonthDays,currentYear,currentMonth){
+    let lastMonth = getLastMonth(currentMonth)
+    let nextMonth = getNextMonth(currentMonth)
+    let lastYear = lastMonth == 12 ? currentYear - 1 : currentYear
+    let nextYear = nextMonth == 1 ? currentYear + 1 : currentYear
+    console.log('currentMonth',currentMonth)
+    console.log('lastMonth',lastMonth)
+    console.log('nextMonth',nextMonth)
+
     let section1 = [...new Array(lastMonthDays + 1).keys()].slice(lastMonthDays - week + 1)
     let section2 = [...new Array(currentMonthDays + 1).keys()].slice(1)
     let section3 = [...new Array(42 - currentMonthDays - week + 1).keys()].slice(1)
-    let allSection = [...section1, ...section2, ...section3]
-
+    let allSection = []
+    section1.forEach((day)=>{
+      allSection.push([day,`${lastYear}-${lastMonth}-${day}`,'day-prev'])
+    })
+    section2.forEach((day)=>{
+      allSection.push([day,`${currentYear}-${currentMonth}-${day}`])
+    })
+    section3.forEach((day)=>{
+      allSection.push([day,`${nextYear}-${nextMonth}-${day}`,'day-next'])
+    })
     return allSection
 }
 
@@ -36,7 +52,7 @@ function getLastMonth(currentMonth){
 }
 
 function getNextMonth(currentMonth){
-  return currentMonth == 1 ? 12 : currentMonth - 1
+  return currentMonth == 12 ? 1 : currentMonth + 1
 }
 
 function abc(){

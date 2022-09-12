@@ -39,7 +39,10 @@
     padding: 5px;
     text-align: center;
 }
-.date-body table th:hover,td:hover{
+.date-body table td.day-prev,td.day-next{
+    color: #d2d2d2;
+}
+.date-body table td:hover{
     background-color: #eee;
     color: #333;
 }
