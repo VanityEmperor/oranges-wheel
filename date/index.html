@@ -20,8 +20,8 @@
             <span class="single-left"></span>
           </div>
           <div class="date-year-month">
-            <span class="year">2022 年</span>
-            <span class="month">8 月</span>
+            <span class="year" id="year"></span>
+            <span class="month" id="month"></span>
           </div>
           <div class="date-icon-box">
             <span class="single-right"></span>
@@ -47,7 +47,7 @@
           </table>
         </div>
         <div class="date-footer">
-          <span>2022-10-02</span>
+          <span id="current-select-date"></span>
           <div class="button-box">
             <span>清空</span><span>现在</span><span>确定</span>
           </div>
@@ -63,6 +63,7 @@
 
   let currentYear = new Date(date).getFullYear()
   let currentMonth = new Date(date).getMonth() + 1
+  let currentDay = new Date(new Date()).getDate()
   let lastMonth = currentMonth == 1 ? 12 : currentMonth - 1
   let nextMonth = currentMonth == 12 ? 1 : currentMonth + 1
 
@@ -82,7 +83,7 @@
   console.log('section2',section2)
   console.log('section3',section3)
   console.log('section3',allSection)
-  createTable(allSection)
+  createTable(allSection,currentYear,currentMonth,currentDay)
 
   function haoManyDays(year, month) {
     const table = {
@@ -101,7 +102,7 @@
     }
   }
 
-  function createTable(arrs) {
+  function createTable(arrs,year,month,day) {
     let  table = document.getElementById('date-table')
     let  body = document.getElementById('date-body')
     for (let i = 0; i <= 5; i++) {
@@ -113,6 +114,13 @@
       }
       body.appendChild(tr)
     }
+
+    let  yearNode = document.getElementById('year')
+    let  monthNode = document.getElementById('month')
+    let  curretSelectDateNode = document.getElementById('current-select-date')
+    yearNode.textContent = `${year} 年` 
+    monthNode.textContent =  `${month} 月`
+    curretSelectDateNode.textContent =  `${year}-${month}-${day}`
   }
 
   function getMonthFirstDay(date){
