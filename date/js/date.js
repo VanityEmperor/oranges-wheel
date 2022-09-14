@@ -13,6 +13,8 @@ let lastMonthDays = haoManyDays(lastMonth == 12 ? currentYear - 1 : currentYear,
 let nextMonthDays = haoManyDays(nextMonth == 1 ? currentYear + 1 : currentYear, nextMonth)
 
 let allSection = allDays(lastMonthDays,currentMonthDays,currentYear,currentMonth)
+let lastSelectElement = null
+let currentDayElement
 createTable(allSection,currentYear,currentMonth,currentDay)
 
 function createTable(arrs,year,month,day) {
@@ -22,10 +24,15 @@ function createTable(arrs,year,month,day) {
     for (let j = 0; j <= 6; j++) {
       let td = document.createElement('td')
       td.textContent =  arrs[i*7+j][0]
-      let day = arrs[i*7+j][1]
+      let ymd = arrs[i*7+j][1]
       td.className = arrs[i*7+j][2] || ''
-      td.setAttribute('data-ymd',day)
+      td.setAttribute('data-ymd',ymd)
       tr.appendChild(td)
+      if(ymd === `${year}-${month}-${day}` ){
+        td.classList.add('date-highlight')
+        currentDayElement = td
+        lastSelectElement = td
+      }
     }
     body.appendChild(tr)
   }
@@ -40,7 +47,7 @@ function createTable(arrs,year,month,day) {
 
 
 let  body = document.getElementById('date-body')
-let lastSelectElement = null
+
 body.addEventListener('click',function(e){
   let element = e.target
   let ymd = element.getAttribute('data-ymd')
@@ -61,4 +68,26 @@ let  inputDate = document.getElementById('input-date')
 inputDate.addEventListener('click',function(e){
   let dateContent = document.getElementById('date-content')
   dateContent.classList.add('date-content-show')
+})
+
+let  clearDate = document.getElementById('clear')
+clearDate.addEventListener('click',function(e){
+  if(lastSelectElement){
+    lastSelectElement.classList.remove('date-highlight')
+  }
+  let dateContent = document.getElementById('date-content')
+  dateContent.classList.remove('date-content-show')
+  currentDayElement.classList.add('date-highlight')
+})
+
+let  nowDate = document.getElementById('now')
+nowDate.addEventListener('click',function(e){
+  if(lastSelectElement == currentDayElement){
+    return
+  } 
+  lastSelectElement.classList.remove('date-highlight')
+  currentDayElement.classList.add('date-highlight')
+  let dateContent = document.getElementById('date-content')
+  dateContent.classList.remove('date-content-show')
+  lastSelectElement = currentDayElement
 })
