@@ -78,6 +78,7 @@ clearDate.addEventListener('click',function(e){
   let dateContent = document.getElementById('date-content')
   dateContent.classList.remove('date-content-show')
   currentDayElement.classList.add('date-highlight')
+  lastSelectElement = currentDayElement
 })
 
 let  nowDate = document.getElementById('now')
