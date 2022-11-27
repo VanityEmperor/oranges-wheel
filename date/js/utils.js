@@ -117,16 +117,13 @@ function nextMonthDate(date){
   let currentYear = date.getFullYear()
   let currentMonth = date.getMonth() + 1
   let currentDay = date.getDate()
-  console.log('before')
-  console.log(`${currentYear}-${currentMonth}-${currentDay}`)
   if(currentMonth == 12){
       currentMonth = 1
       currentYear = currentYear+1
   } else {
     currentMonth = currentMonth + 1
   }
-  console.log('after')
-  console.log(`${currentYear}-${currentMonth}-${currentDay}`)
+  currentDay = dayValid(currentYear,currentMonth,currentDay)
   return new Date(`${currentYear}-${currentMonth}-${currentDay}`)
 }
 
@@ -135,16 +132,13 @@ function lastMonthDate(date){
   let currentYear = date.getFullYear()
   let currentMonth = date.getMonth() + 1
   let currentDay = date.getDate()
-  console.log('before')
-  console.log(`${currentYear}-${currentMonth}-${currentDay}`)
   if(currentMonth == 1){
       currentMonth = 12
       currentYear = currentYear-1
   } else {
     currentMonth = currentMonth - 1
   }
-  console.log('after')
-  console.log(`${currentYear}-${currentMonth}-${currentDay}`)
+  currentDay = dayValid(currentYear,currentMonth,currentDay)
   return new Date(`${currentYear}-${currentMonth}-${currentDay}`)
 }
 
@@ -152,11 +146,8 @@ function nextYearDate(date){
   let currentYear = date.getFullYear()
   let currentMonth = date.getMonth() + 1
   let currentDay = date.getDate()
-  console.log('before')
-  console.log(`${currentYear}-${currentMonth}-${currentDay}`)
   currentYear = currentYear+1
-  console.log('after')
-  console.log(`${currentYear}-${currentMonth}-${currentDay}`)
+  currentDay = dayValid(currentYear,currentMonth,currentDay)
   return new Date(`${currentYear}-${currentMonth}-${currentDay}`)
 }
 
@@ -165,10 +156,18 @@ function lastYearDate(date){
   let currentYear = date.getFullYear()
   let currentMonth = date.getMonth() + 1
   let currentDay = date.getDate()
-  console.log('before')
-  console.log(`${currentYear}-${currentMonth}-${currentDay}`)
   currentYear = currentYear-1
-  console.log('after')
-  console.log(`${currentYear}-${currentMonth}-${currentDay}`)
+  currentDay = dayValid(currentYear,currentMonth,currentDay)
   return new Date(`${currentYear}-${currentMonth}-${currentDay}`)
+}
+
+function dayValid(currentYear,currentMonth,currentDay){
+  if(currentMonth==2&&currentDay>28){
+    if(isLeapYear(currentYear)){
+      currentDay = 29
+    } else {
+      currentDay = 28
+    }
+  }
+  return currentDay
 }
