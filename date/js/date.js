@@ -41,6 +41,8 @@ clearDate.addEventListener('click',function(e){
   dateContent.classList.remove('date-content-show')
   currentDayElement.classList.add('date-highlight')
   lastSelectElement = currentDayElement
+  let dateInput = document.getElementById('input-date')
+  dateInput.value = ''
 })
 
 let  now = document.getElementById('now')
@@ -53,4 +55,7 @@ now.addEventListener('click',function(e){
   let dateContent = document.getElementById('date-content')
   dateContent.classList.remove('date-content-show')
   lastSelectElement = currentDayElement
+  ymd = currentDayElement.getAttribute('data-ymd')
+  let dateInput = document.getElementById('input-date')
+  dateInput.value = ymd
 })
