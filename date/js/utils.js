@@ -1,4 +1,6 @@
 function createDateContent(date){
+  let  body = document.getElementById('date-body')
+  body.innerHTML = ""
   let currentDay = date.getDate()
   let dateFirstDay = getMonthFirstDay(date)
   let {week,currentYear,currentMonth,lastMonth,nextMonth,currentMonthDays,lastMonthDays,nextMonthDays} = createDate(dateFirstDay)

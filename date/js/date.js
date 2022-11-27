@@ -7,24 +7,18 @@ createDateContent(new Date())
 let  singleRight = document.getElementById('single-right')
 singleRight.addEventListener('click',function(e){
   date = nextMonthDate(date)
-  let  body = document.getElementById('date-body')
-  body.innerHTML = ""
   createDateContent(date)
 })
 
 let  singleLeft = document.getElementById('single-left')
 singleLeft.addEventListener('click',function(e){
   date = lastMonthDate(date)
-  let  body = document.getElementById('date-body')
-  body.innerHTML = ""
   createDateContent(date)
 })
 
 let  doubleRight = document.getElementById('double-right')
 doubleRight.addEventListener('click',function(e){
   date = nextYearDate(date)
-  let  body = document.getElementById('date-body')
-  body.innerHTML = ""
   createDateContent(date)
 })
 
@@ -32,8 +26,6 @@ doubleRight.addEventListener('click',function(e){
 let  doubleLeft = document.getElementById('double-left')
 doubleLeft.addEventListener('click',function(e){
   date = lastYearDate(date)
-  let  body = document.getElementById('date-body')
-  body.innerHTML = ""
   createDateContent(date)
 })
 
@@ -73,6 +65,7 @@ clearDate.addEventListener('click',function(e){
   let dateInput = document.getElementById('input-date')
   dateInput.value = ''
   date = new Date()
+  createDateContent(date)
 })
 
 let  now = document.getElementById('now')
@@ -89,4 +82,5 @@ now.addEventListener('click',function(e){
   let dateInput = document.getElementById('input-date')
   dateInput.value = ymd
   date = new Date()
+  createDateContent(date)
 })
