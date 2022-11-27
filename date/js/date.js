@@ -1,13 +1,41 @@
 
-let nowDay =  new Date(new Date()).getDate()
-
-let date = getMonthFirstDay(new Date())
 let lastSelectElement = null
 let currentDayElement
+let date = new Date()
+createDateContent(new Date())
 
-createDateContent(date)
+let  singleRight = document.getElementById('single-right')
+singleRight.addEventListener('click',function(e){
+  date = nextMonthDate(date)
+  let  body = document.getElementById('date-body')
+  body.innerHTML = ""
+  createDateContent(date)
+})
+
+let  singleLeft = document.getElementById('single-left')
+singleLeft.addEventListener('click',function(e){
+  date = lastMonthDate(date)
+  let  body = document.getElementById('date-body')
+  body.innerHTML = ""
+  createDateContent(date)
+})
+
+let  doubleRight = document.getElementById('double-right')
+doubleRight.addEventListener('click',function(e){
+  date = nextYearDate(date)
+  let  body = document.getElementById('date-body')
+  body.innerHTML = ""
+  createDateContent(date)
+})
 
 
+let  doubleLeft = document.getElementById('double-left')
+doubleLeft.addEventListener('click',function(e){
+  date = lastYearDate(date)
+  let  body = document.getElementById('date-body')
+  body.innerHTML = ""
+  createDateContent(date)
+})
 
 let  body = document.getElementById('date-body')
 body.addEventListener('click',function(e){
@@ -15,6 +43,7 @@ body.addEventListener('click',function(e){
   let ymd = element.getAttribute('data-ymd')
   let dateInput = document.getElementById('input-date')
   dateInput.value = ymd
+  date = new Date(ymd)
   let  curretSelectDateNode = document.getElementById('current-select-date')
   curretSelectDateNode.textContent =  ymd
   let dateContent = document.getElementById('date-content')
@@ -43,6 +72,7 @@ clearDate.addEventListener('click',function(e){
   lastSelectElement = currentDayElement
   let dateInput = document.getElementById('input-date')
   dateInput.value = ''
+  date = new Date()
 })
 
 let  now = document.getElementById('now')
@@ -58,4 +88,5 @@ now.addEventListener('click',function(e){
   ymd = currentDayElement.getAttribute('data-ymd')
   let dateInput = document.getElementById('input-date')
   dateInput.value = ymd
+  date = new Date()
 })
