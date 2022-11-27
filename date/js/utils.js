@@ -1,3 +1,10 @@
+function createDateContent(date){
+  let {week,currentYear,currentMonth,lastMonth,nextMonth,currentMonthDays,lastMonthDays,nextMonthDays} = createDate(date)
+  let allSection = allDays(lastMonthDays,currentMonthDays,currentYear,currentMonth,week)
+  createTable(allSection,currentYear,currentMonth,nowDay)
+}
+
+
 function haoManyDays(year, month) {
     const table = {
       1: 31, 3: 31, 5: 31, 7: 31, 8: 31, 9: 30, 10: 31, 12: 31,
@@ -22,7 +29,7 @@ function getMonthFirstDay(date){
     return new Date(`${currentYear}-${currentMonth}-1`)
 }
 
-function allDays(lastMonthDays,currentMonthDays,currentYear,currentMonth){
+function allDays(lastMonthDays,currentMonthDays,currentYear,currentMonth,week){
     let lastMonth = getLastMonth(currentMonth)
     let nextMonth = getNextMonth(currentMonth)
     let lastYear = lastMonth == 12 ? currentYear - 1 : currentYear
@@ -52,6 +59,71 @@ function getNextMonth(currentMonth){
   return currentMonth == 12 ? 1 : currentMonth + 1
 }
 
-function abc(){
-  
+function createTable(arrs,year,month,day) {
+  let  body = document.getElementById('date-body')
+  for (let i = 0; i <= 5; i++) {
+    let tr = document.createElement('tr')
+    for (let j = 0; j <= 6; j++) {
+      let td = document.createElement('td')
+      td.textContent =  arrs[i*7+j][0]
+      let ymd = arrs[i*7+j][1]
+      td.className = arrs[i*7+j][2] || ''
+      td.setAttribute('data-ymd',ymd)
+      tr.appendChild(td)
+      if(ymd === `${year}-${month}-${day}` ){
+        td.classList.add('date-highlight')
+        currentDayElement = td
+        lastSelectElement = td
+      }
+    }
+    body.appendChild(tr)
+  }
+
+  let  yearNode = document.getElementById('year')
+  let  monthNode = document.getElementById('month')
+  let  curretSelectDateNode = document.getElementById('current-select-date')
+  yearNode.textContent = `${year} 年` 
+  monthNode.textContent =  `${month} 月`
+  curretSelectDateNode.textContent =  `${year}-${month}-${day}`
+}
+
+function createDate(date){
+  let week = new Date(date).getDay()
+  let currentYear = new Date(date).getFullYear()
+  let currentMonth = new Date(date).getMonth() + 1
+  // let currentDay = new Date(new Date()).getDate()
+  let lastMonth = getLastMonth(currentMonth)
+  let nextMonth = getNextMonth(currentMonth)
+  let currentMonthDays = haoManyDays(currentYear, currentMonth)
+  let lastMonthDays = haoManyDays(lastMonth == 12 ? currentYear - 1 : currentYear, lastMonth)
+  let nextMonthDays = haoManyDays(nextMonth == 1 ? currentYear + 1 : currentYear, nextMonth)
+
+
+  return{
+    week,
+    currentYear,
+    currentMonth,
+    // currentDay,
+    lastMonth,
+    nextMonth,
+    currentMonthDays,
+    lastMonthDays,
+    nextMonthDays,
+  }
+}
+
+function nextMonthDate(date){
+  let currentYear = new Date(date).getFullYear()
+  let currentMonth = new Date(date).getMonth() + 1
+  console.log('before')
+  console.log(`${currentYear}-${currentMonth}-1`)
+  if(currentMonth == 12){
+      currentMonth = 1
+      currentYear = currentYear+1
+  } else {
+    currentMonth = currentMonth + 1
+  }
+  console.log('after')
+  console.log(`${currentYear}-${currentMonth}-1`)
+  return new Date(`${currentYear}-${currentMonth}-1`)
 }
