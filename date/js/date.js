@@ -70,17 +70,12 @@ clearDate.addEventListener('click',function(e){
 
 let  now = document.getElementById('now')
 now.addEventListener('click',function(e){
-  if(lastSelectElement == currentDayElement){
-    return
-  } 
-  lastSelectElement.classList.remove('date-highlight')
-  currentDayElement.classList.add('date-highlight')
-  let dateContent = document.getElementById('date-content')
-  dateContent.classList.remove('date-content-show')
-  lastSelectElement = currentDayElement
-  ymd = currentDayElement.getAttribute('data-ymd')
-  let dateInput = document.getElementById('input-date')
-  dateInput.value = ymd
   date = new Date()
   createDateContent(date)
+  let dateContent = document.getElementById('date-content')
+  dateContent.classList.remove('date-content-show')
+  let dateInput = document.getElementById('input-date')
+  let {currentYear,currentMonth,currentDay} = createDate(date)
+  dateInput.value = `${currentYear}-${currentMonth}-${currentDay}`
 })
+

@@ -95,7 +95,7 @@ function createDate(date){
   let week = new Date(date).getDay()
   let currentYear = new Date(date).getFullYear()
   let currentMonth = new Date(date).getMonth() + 1
-  // let currentDay = new Date(new Date()).getDate()
+  let currentDay = new Date(new Date()).getDate()
   let lastMonth = getLastMonth(currentMonth)
   let nextMonth = getNextMonth(currentMonth)
   let currentMonthDays = haoManyDays(currentYear, currentMonth)
@@ -112,6 +112,7 @@ function createDate(date){
     currentMonthDays,
     lastMonthDays,
     nextMonthDays,
+    currentDay,
   }
 }
 
