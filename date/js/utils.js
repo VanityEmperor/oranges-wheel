@@ -3,7 +3,7 @@ function createDateContent(date){
   body.innerHTML = ""
   let currentDay = date.getDate()
   let dateFirstDay = getMonthFirstDay(date)
-  let {week,currentYear,currentMonth,lastMonth,nextMonth,currentMonthDays,lastMonthDays,nextMonthDays} = createDate(dateFirstDay)
+  let {week,currentYear,currentMonth,currentMonthDays,lastMonthDays} = createDate(dateFirstDay)
   let allSection = allDays(lastMonthDays,currentMonthDays,currentYear,currentMonth,week)
   createTable(allSection,currentYear,currentMonth,currentDay)
 }
@@ -95,7 +95,6 @@ function createDate(date){
   let week = new Date(date).getDay()
   let currentYear = new Date(date).getFullYear()
   let currentMonth = new Date(date).getMonth() + 1
-  let currentDay = new Date(new Date()).getDate()
   let lastMonth = getLastMonth(currentMonth)
   let nextMonth = getNextMonth(currentMonth)
   let currentMonthDays = haoManyDays(currentYear, currentMonth)
@@ -112,7 +111,6 @@ function createDate(date){
     currentMonthDays,
     lastMonthDays,
     nextMonthDays,
-    currentDay,
   }
 }
 
