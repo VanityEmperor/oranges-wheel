@@ -36,6 +36,13 @@ body.addEventListener('click',function(e){
   let dateInput = document.getElementById('input-date')
   dateInput.value = ymd
   date = new Date(ymd)
+  let dateType  = element.getAttribute('class')
+  if(dateType == 'day-prev' || dateType == 'day-next'){
+    createDateContent(new Date(ymd))
+    let dateContent = document.getElementById('date-content')
+    dateContent.classList.remove('date-content-show')
+    return
+  }
   let  curretSelectDateNode = document.getElementById('current-select-date')
   curretSelectDateNode.textContent =  ymd
   let dateContent = document.getElementById('date-content')
