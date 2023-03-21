@@ -51,6 +51,7 @@ let  inputDate = document.getElementById('input-date')
 inputDate.addEventListener('click',function(e){
   let dateContent = document.getElementById('date-content')
   dateContent.classList.add('date-content-show')
+  e.stopPropagation()
 })
 
 let  clearDate = document.getElementById('clear')
@@ -79,3 +80,13 @@ now.addEventListener('click',function(e){
   dateInput.value = `${currentYear}-${currentMonth}-${currentDay}`
 })
 
+window.addEventListener('click',function(e){
+  console.log('document')
+  let dateContent = document.getElementById('date-content')
+  dateContent.classList.remove('date-content-show')
+})
+
+let dateContent = document.getElementById('date-content')
+dateContent.addEventListener('click',function(e){
+  e.stopPropagation()
+})
