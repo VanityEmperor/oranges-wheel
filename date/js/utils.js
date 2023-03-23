@@ -172,3 +172,50 @@ function dayValid(currentYear,currentMonth,currentDay){
   }
   return currentDay
 }
+
+
+function createYear(year){
+  let yearArrs = createYearSection(year)
+  let  body = document.getElementById('year-body')
+  body.style.display = 'block'
+  body.innerHTML = ""
+  let ul = document.createElement('ul')
+  for(let i = 0;i < yearArrs.length;i++){
+    let li = document.createElement('li')
+    li.textContent = yearArrs[i]
+    if(year === yearArrs[i]){
+      li.classList.add('year-highlight')
+    }
+    ul.appendChild(li)
+  }
+  body.appendChild(ul)
+  
+}
+
+function createYearSection(year){
+  let beginYear = year - 7
+  let arr = []
+  for(let i = 0; i<15;i++){
+    arr.push(beginYear++) 
+  }
+  return arr
+}
+
+
+function createMonth(month){
+  let  body = document.getElementById('month-body')
+  body.style.display = 'block'
+  body.innerHTML = ""
+  let monthArr = ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'] 
+  let ul = document.createElement('ul')
+  for(let i = 0;i < monthArr.length;i++){
+    let li = document.createElement('li')
+    li.textContent = monthArr[i]
+    li.setAttribute('month',i+1)
+    if(+month === i+1){
+      li.classList.add('month-highlight')
+    }
+    ul.appendChild(li)
+    body.appendChild(ul)
+  }
+}

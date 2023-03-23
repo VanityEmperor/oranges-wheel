@@ -60,7 +60,7 @@
 }
 .date-header{
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     border-bottom: 1px solid #d2d2d2;
 }
 .double-left{
@@ -120,4 +120,68 @@
 .button-box span:nth-child(even){
     border-left: none;
     border-right: none;
+}
+
+
+.year-body{
+    border-bottom: 1px solid #d2d2d2;
+}
+.year-body ul{
+    margin: 0;
+    padding: 10px;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.year-body ul li{
+    width: 33.3%;
+    height: 36px;
+    line-height: 36px;
+    margin: 3px 0;
+    text-align: center;
+}
+.year-body ul li:hover{
+    background-color: #eee;
+    color: #333;
+}
+.year-body ul li.year-highlight{
+    background-color: #009688;
+    color: #fff;
+}
+
+.year-link{
+    display: none;
+    line-height: 30px;
+}
+
+
+
+.month-body{
+    border-bottom: 1px solid #d2d2d2;
+}
+.month-body ul{
+    margin: 0;
+    padding: 10px;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.month-body ul li{
+    width: 25%;
+    height: 36px;
+    line-height: 36px;
+    margin: 17px 0;
+    text-align: center;
+}
+
+.month-body ul li.month-highlight{
+    background-color: #009688;
+    color: #fff;
+}
+
+.single-year-box{
+    display: none;
+    line-height: 30px;
 }
